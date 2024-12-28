@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrated Sections</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Top Bar Styling */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #e6e5e3;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #212121;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #185adb;
+    }
+
+    /* Background Section Styling */
+    .background {
+      background-image: url('AGD1 BG & FORM.png'); /* Replace with file path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* White Container Styling */
+    .container {
+      background: transparent;
+      text-align: center;
+      padding: 33px;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .container img {
+      width: 100px;
+      margin-top: -50px;
+    }
+
+    .headline {
+      font-size: 20px;
+      color: #333;
+      font-weight: 400;
+      margin-top: 20px;
+    }
+
+    /* Search Bar Styling */
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-radius: 25px;
+      width: 100%;
+      max-width: 400px;
+      padding: 5px 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+    }
+
+    .search-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ff7f00;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+    }
+
+    .search-icon img {
+      width: 35px;
+      height: 35px;
+      margin: 3.5px;
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #333;
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .search-input::placeholder {
+      color: #aaa;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-button {
+      background: #f5f5f5;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dropdown-button:after {
+      content: '▼';
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* Dropdown Menu Styling */
+    .dropdown-menu {
+      display: none; /* Hidden by default */
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 10px;
+      width: 310px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .dropdown-menu div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #f5f5f5;
+      border-radius: 25px;
+      transition: background-color 0.3s;
+      width: 50px; /* Increased width */
+      margin: 0 auto; /* Center the options inside the dropdown */
+    }
+
+    .dropdown-menu div:hover {
+      background: #185adb;
+      color: white;
+    }
+
+    .dropdown.open .dropdown-menu {
+      display: grid; /* Show when open */
+    }
+
+    /* Section 2 Styling */
+    .section-2 {
+      background: linear-gradient(to bottom, #185adb, #001741);
+      display: flex;
+      flex-direction: column; /* Stack children vertically */
+      align-items: flex-start;
+      height: 100vh; /* Full viewport height */
+      padding: 0 20px; /* Add some horizontal padding for small screens */
+    }
+
+    .section-2-headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 65px;
+      font-weight: 100;
+      color: #fff;
+      text-align: left;
+      margin: 95px 0 30px 60px; /* Adjust spacing for consistency */
+      line-height: 1.2; /* Adjust line height */
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      gap: 25px 70px; /* Space between cards */
+      max-width: 1090px; /* Limit container width */
+      width: 100%;
+      margin: 0 0 0 70px; /* Center the container */
+      padding: 30px 30px 0 0; /* Adjust horizontal padding */
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      background: #fff; /* White background for the card */
+      border-radius: 12px; /* Rounded corners for the card */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      padding: 10px 15px; /* Inner spacing */
+      max-width: 350px; /* Max width of the card */
+      position: relative; /* For positioning the circular icon */
+      margin: 0 auto; /* Center card horizontally */
+    }
+
+    .icon-container {
+      position: absolute;
+      top: 50%;
+      left: -25px; /* Move the circle to align with the left edge of the card */
+      transform: translateY(-50%); /* Center vertically */
+      width: 50px; /* Diameter of the circle */
+      height: 50px;
+      background: #ffffff; /* Background color of the circle */
+      border-radius: 50%; /* Makes the shape circular */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the circle */
+    }
+
+    .icon {
+      width: 50px; /* Adjust size of the icon */
+      height: 50px;
+      object-fit: contain; /* Maintain the aspect ratio of the icon */
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column; /* Stack title and subtitle vertically */
+      margin-left: 30px; /* Add margin to avoid overlap with the circle */
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 100;
+      color: #000; /* Black color for the title */
+      margin: 0; /* Remove default margin */
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #000000; /* Gray color for the subtitle */
+      margin: 0.8px 0 0; /* Space between title and subtitle */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .section-2-headline {
+        font-size: 60px; /* Reduce font size for smaller screens */
+      }
+      .card-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-2-headline {
+        font-size: 40px; /* Further reduce font size for extra small screens */
+      }
+      .card-container {
+        grid-template-columns: 1fr; /* Single column for small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src="AG LOGO CENTER.png" alt="Company Logo"> <!-- Replace with actual logo -->
+    </div>
+    <div class="nav-links">
+      <a href="#">Sign Up</a>
+      <a href="#">Sign In</a>
+      <a href="#">FAQs</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+
+<!-- Background Section -->
+<div class="background">
+  <!-- White Container -->
+  <div class="container">
+    <img src="AG LOGO CENTER.png" alt="Company Logo"> <!-- Replace with actual logo -->
+    <h2 class="headline">Search for something</h2>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <div class="search-icon">
+        <img src="search-icon.png" alt="Search Icon"> <!-- Replace with actual search icon -->
+      </div>
+      <input type="text" class="search-input" placeholder="Search...">
+      <div class="dropdown">
+        <button id="dropdownButton" class="dropdown-button">Options</button>
+        <div id="dropdownMenu" class="dropdown-menu">
+          <div onclick="selectOption('Option 1')">Option 1</div>
+          <div onclick="selectOption('Option 2')">Option 2</div>
+          <div onclick="selectOption('Option 3')">Option 3</div>
+          <div onclick="selectOption('Option 4')">Option 4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <section class="section-2">
+    <h1 class="section-2-headline">One Name<br>Multiple Uses</h1>
+    <div class="card-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="website.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">DOMAIN NAME</h3>
+          <p class="subtitle">Could be your name as a Web2 & Web3 domain name</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="email ion.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">E-MAIL ADDRESS</h3>
+          <p class="subtitle">Could be your name as your personal e-mail ID name</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="wallet.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">UPI ADDRESS</h3>
+          <p class="subtitle">Could be your name as your de facto payment ID</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="NFT icon.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">NON FUNGIBLE TOKEN</h3>
+          <p class="subtitle">Could be your name in the metaverse</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="login.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">SINGLE SIGN ON</h3>
+          <p class="subtitle">Could be your universal login to all the apps</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <div class="icon-container">
+          <img src="green tick.png" alt="Icon" class="icon" />
+        </div>
+        <div class="text-container">
+          <h3 class="title">WALLET ID</h3>
+          <p class="subtitle">Could be your universal wallet address for eRupee & Crypto</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const dropdownButton = document.getElementById('dropdownButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    dropdownButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.parentElement.classList.toggle('open');
+    });
+
+    function selectOption(option) {
+      dropdownButton.textContent = option;
+      dropdownMenu.parentElement.classList.remove('open');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.parentElement.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
