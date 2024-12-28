@@ -11,9 +11,9 @@ justify-content: space-between;
 align-items: center;
 background-color: #fff;
 border-bottom: 1px solid #e6e5e3;
-background-size: 100% auto;
-background-repeat: no-repeat;
 position: fixed;
+top: 0;
+left: 0;
 width: 100%;
 z-index: 1000;
 }
@@ -47,22 +47,22 @@ cursor: pointer;
 
 /* Side Menu Styling */
 .side-menu {
-  width: 250px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: #fff;
-  overflow-x: hidden;
-  transition: 0.3s;
-  padding-top: 60px;
-  z-index: 1100;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+height: 100%;
+width: 0;
+position: fixed;
+top: 0;
+right: 0;
+background-color: #fff;
+overflow-x: hidden;
+transition: 0.3s;
+padding-top: 60px;
+z-index: 1100;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .side-menu a {
 display: block;
-padding: 20px 0 0 20px;
+padding: 10px 20px;
 text-decoration: none;
 color: #212121;
 font-size: 18px;
@@ -94,7 +94,6 @@ cursor: pointer;
 
 /* Responsive Design */
 @media (max-width: 480px) {
-
   .nav-links {
     display: none;
   }
@@ -108,12 +107,10 @@ cursor: pointer;
     align-items: center;
     background-color: #fff;
     border-bottom: 1px solid #e6e5e3;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     position: fixed;
     top: 0;
     left: 0;
-    width: 90%;
+    width: 100%;
     z-index: 1000;
     }
   }
@@ -378,6 +375,7 @@ border-radius: 8px; /* Optional: rounded corners */
   display: flex;
   flex-direction: column; /* Stack children vertically */
   align-items: flex-start;
+   /* Full viewport height */
   padding: 0 20px; /* Add some horizontal padding for small screens */
 }
 
@@ -515,7 +513,7 @@ border-radius: 8px; /* Optional: rounded corners */
 
   .card-container {
     grid-template-columns: 1fr; /* Single column */
-    max-width:fit-content ;;
+    max-width: 400px ;
     margin: 0 0 0 0;
     gap: 10px 90px;
   }
@@ -549,7 +547,7 @@ border-radius: 8px; /* Optional: rounded corners */
 
   .card-container {
     gap: 8px 30px;
-    max-width:fit-content ;
+    max-width: 290px;
     width: 100%;
   }
 
@@ -626,13 +624,6 @@ border-radius: 8px; /* Optional: rounded corners */
   margin-bottom: 30px;
 }
 
-.language-grid{
-  display: none;
-}
-
-.search-button{
-  display: none;
-}
 
 .languages {
   display: flex;
@@ -679,7 +670,7 @@ border-radius: 8px; /* Optional: rounded corners */
 
 @media (max-width: 770px) {
   .section-3-headline {
-    font-size: 45px;
+    font-size: 50px;
     margin-bottom: 15px;
     letter-spacing: 5px;
   }
@@ -700,7 +691,7 @@ border-radius: 8px; /* Optional: rounded corners */
 
 @media (max-width: 667px) {
   .section-3-headline {
-    font-size: 40px;
+    font-size: 47px;
     margin-bottom: 15px;
     letter-spacing: 4px;
   }
@@ -720,158 +711,46 @@ border-radius: 8px; /* Optional: rounded corners */
 }
 
 @media (max-width: 588px) {
-  .section-3 {
-    height:auto;
-    background-color: white; /* Set the background to white */
-    background-image: url('AGP3  BGCOLOR IMG.png'); /* Ensure the image path is correct */
-    background-size: 100% auto;
-    background-position: bottom center; /* Position the image at the bottom */
-    background-repeat: no-repeat;
-    padding: 0 0 0 0;
-  }
-
   .section-3-headline {
-    font-size: 33px;
-    margin-top: 50px;
+    font-size: 44px;
+    margin-bottom: 15px;
     letter-spacing: 4px;
   }
 
-  .languages {
-    display: none;
-  }
-
-  .language-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(80px, 1fr));
-    gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  .language-item {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
+  .language-card {
+    background: white;
     color: #002244;
-    background-color: transparent; /* No background */
-    border: none; /* No border */
-  }
-
-  .language-item-more {
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #898d92;
-    background-color: transparent; /* No background */
-    border: none; /* No border */
-  }
-
-  .language-item:hover {
-    color: orange; /* Highlight effect on hover */
-  }
-
-  .search-iconP3 {
-    display: none; /* Hide the old search icon */
-  }
-
-  .search-button {
-    display: inline-block;
-    background-color: orange; /* Orange background for the search button */
-    color: white;
-    margin-bottom: 270px;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none; /* Remove underline from the link */
-    margin-top: 10px; /* Add some space above the button */
-  }
-
-  .search-button:hover {
-    background-color: darkorange; /* Darker shade of orange on hover */
   }
 }
 
 @media (max-width: 480px) {
-  .section-3 {
-    height:auto;
-    background-color: white; /* Set the background to white */
-    background-image: url('AGP3  BGCOLOR IMG.png'); /* Ensure the image path is correct */
-    background-size: 100% auto;
-    background-position: bottom center; /* Position the image at the bottom */
-    background-repeat: no-repeat;
-    padding: 0 0 0 0;
-  }
-
   .section-3-headline {
-    font-size: 23px;
-    margin-top: 50px;
+    font-size: 30px;
+    margin-bottom: 10px;
     letter-spacing: 4px;
   }
 
-  .languages {
-    display: none;
-  }
-
-  .language-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(80px, 1fr));
-    gap: 15px ;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .language-item {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
+  .language-card {
+    background: white;
     color: #002244;
-    background-color: transparent; /* No background */
-    border: none; /* No border */
-  }
-
-  .language-item-more {
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #898d92;
-    background-color: transparent; /* No background */
-    border: none; /* No border */
-  }
-
-  .language-item:hover {
-    color: orange; /* Highlight effect on hover */
-  }
-
-  .search-iconP3 {
-    display: none; /* Hide the old search icon */
-  }
-
-  .search-button {
-    display: inline-block;
-    background-color: orange; /* Orange background for the search button */
-    color: white;
-    margin-top: 20px;
-    margin-bottom: 200px;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none; /* Remove underline from the link */
-    margin-top: 20px; /* Add some space above the button */
-  }
-
-  .search-button:hover {
-    background-color: darkorange; /* Darker shade of orange on hover */
   }
 }
-
 
 /* Section-4  */
 
@@ -1009,9 +888,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 .section-5 {
   background-image: url('AGD2 BG IMAGE.jpg'); /* Ensure this is the correct image path */
-  background-size: 100% auto;
-  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: space-between; /* Adjust space between heading and cards */
   align-items: center;
@@ -1126,17 +1005,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 @media (max-width: 480px) {
-
-  .section-5 {
-    height:auto;
-    background-color: white; /* Set the background to white */
-    background-image: url('AGP3  BGCOLOR IMG.png'); /* Ensure the image path is correct */
-    background-size: 110% auto;
-    background-position: bottom center; /* Position the image at the bottom */
-    background-repeat: no-repeat;
-    padding: 0 0 0 0;
-  }
-
   .section-5-headline {
     font-size: 40px;
     margin-left: 10px;
